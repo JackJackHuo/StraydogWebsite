@@ -246,11 +246,77 @@ header {
   background-position: center;
 }
 
+/* album */
+.album-wrapper{
+  display: grid;
+  grid-auto-flow: row;
+  grid-auto-rows: 60vw;
+  grid-gap: 1rem;
+  justify-content: center;
+}
+
+.card{
+  position:relative;
+  display:flex;
+  flex-flow:column nowrap;
+  align-items:center;
+}
+
+.card:hover::before,
+.card:hover::after,
+.card:hover .card-text,
+.card:hover{
+  transform: scale(1 , 1);
+  visibility: visible;
+  opacity: 0.8;
+}
+
+.card::before,
+.card::after{
+  content: '';
+	position: absolute;
+}
+
+.card::before {
+	top: 9%;
+	height: 84%;
+	width: 95%;
+	border-top: 2px solid rgb(245, 238, 238);
+	border-bottom: 2px solid rgb(245, 238, 238);
+  transition: transform .5s ease-in-out;
+  transform: scale(0 , 1);
+}
+
+.card::after{
+  top:6%;
+  height: 90%;
+  width: 90%;
+  border-left: 2px solid rgb(245, 238, 238);
+  border-right: 2px solid rgb(245, 238, 238);
+  transition: transform .5s ease-in-out;
+  transform: scale(1 , 0)
+}
+
+.card img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 40%;
+}
+
+.card-text{
+  position:absolute;
+  top:50%;
+  color: rgb(245, 238, 238);
+  transition: visibility .5s ease-in-out;
+  visibility: hidden;
+}
+
 @media screen and (min-width: 768px) {
-/*   .action {
+  .action {
     font-size: 1.2rem;
     padding: 0.75rem 2rem;
-  } */
+  }
 
   /*Main Header*/
   header {
@@ -313,5 +379,16 @@ header {
 
   .sub-banner .action {
     font-size: 1.2rem;
+  }
+
+  /* album */
+  .album-wrapper{
+    all: unset;
+    display: grid;
+    grid-gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px , 1fr));
+  }
+  .card{
+    height: 250px;
   }
 }
